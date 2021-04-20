@@ -12,6 +12,7 @@
     $bil1 = $_POST['bil1'];
     $bil2 = $_POST['bil2'];
     $operasi = $_POST['operasi'];
+    $selected = $_POST['selected'];
     switch ($operasi) {
       case 'tambah':
         $hasil = $bil1 + $bil2;
@@ -26,6 +27,20 @@
         $hasil = $bil1 / $bil2;
         break;
     }
+    switch ($operasi) {
+      case 'tambah':
+        $selected = "+";
+        break;
+      case 'kurang':
+        $selected = "-";
+        break;
+      case 'kali':
+        $selected = "x";
+        break;
+      case 'bagi':
+        $selected = "/";
+        break;
+    }
   }
   ?>
   <div align="center">
@@ -38,6 +53,7 @@
         <option value="kurang">-</option>
         <option value="kali">x</option>
         <option value="bagi">/</option>
+        <option selected="<?php echo $selected; ?>"><?php echo $selected; ?></option>
       </select>
       <input type="text" value="<?php echo $bil2; ?>" name="bil2" autocomplete="off" placeholder="Masukkan bilangan kedua">
       <input type="submit" name="hitung" value="Hitung">
